@@ -1,7 +1,7 @@
 enabled: true
 apiGroup: "monitoring.coreos.com"
 image:
-  repository: rancher/istio-kubectl
+  repository: loongson.harbor.cn/rancher/istio-kubectl
   tag: 1.1.5
 resources:
   limits:
