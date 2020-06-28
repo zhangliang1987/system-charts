@@ -12,7 +12,7 @@ global:
 
 nodeagent:
   enabled: true
-  repository: rancher/istio-node-agent-k8s
+  repository: loongson.harbor.cn/istio/node-agent-k8s
   tag: 1.4.7
   env:
     # The IP address and the port number of a publicly accessible example Vault server.

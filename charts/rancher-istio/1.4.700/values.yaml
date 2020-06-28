@@ -22,7 +22,7 @@ gateways:
 # charts/sidecarInjectorWebhook/values.yaml for detailed configuration
 #
 sidecarInjectorWebhook:
-  repository: rancher/istio-sidecar_injector
+  repository: loongson.harbor.cn/istio/sidecar_injector
   tag: 1.4.7
   enabled: true
 
@@ -31,7 +31,7 @@ sidecarInjectorWebhook:
 # for detailed configuration
 #
 galley:
-  repository: rancher/istio-galley
+  repository: loongson.harbor.cn/istio/galley
   tag: 1.4.7
   enabled: true
 
@@ -40,7 +40,7 @@ galley:
 #
 # @see charts/mixer/values.yaml for all values
 mixer:
-  repository: rancher/istio-mixer
+  repository: loongson.harbor.cn/istio/mixer
   tag: 1.4.7
   policy:
     # if policy is enabled the global.disablePolicyChecks has affect.
@@ -53,7 +53,7 @@ mixer:
 #
 # @see charts/pilot/values.yaml
 pilot:
-  repository: rancher/istio-pilot
+  repository: loongson.harbor.cn/istio/pilot
   tag: 1.4.7
   enabled: true
 
@@ -61,7 +61,7 @@ pilot:
 # security configuration
 #
 security:
-  repository: rancher/istio-citadel
+  repository: loongson.harbor.cn/istio/citadel
   tag: 1.4.7
   enabled: true
 
@@ -75,7 +75,7 @@ nodeagent:
 # addon grafana configuration
 #
 grafana:
-  repository: rancher/grafana-grafana
+  repository: loongson.harbor.cn/rancher/grafana-grafana
   tag: 6.3.6
   enabled: false
 
@@ -83,8 +83,8 @@ grafana:
 # addon prometheus configuration
 #
 prometheus:
-  repository: rancher/prom-prometheus
-  tag: v2.12.0
+  repository: loongson.harbor.cn/rancher/prom-prometheus
+  tag: v2.11.1
   enabled: false
 
 #
@@ -92,10 +92,10 @@ prometheus:
 #
 tracing:
   jaeger:
-    repository: rancher/jaegertracing-all-in-one
-    tag: 1.14
+    repository: loongson.harbor.cn/istio/jaegertracing-all-in-one
+    tag: 1.18
   zipkin:
-    repository: rancher/openzipkin-zipkin
+    repository: loongson.harbor.cn/rancher/openzipkin-zipkin
     tag: 2.14.2
   enabled: false
 
@@ -103,8 +103,8 @@ tracing:
 # addon kiali tracing configuration
 #
 kiali:
-  repository: rancher/kiali-kiali
-  tag: v1.9
+  repository: loongson.harbor.cn/istio/kiali-kiali
+  tag: v1.14
   contextPath: /
   dashboard:
     jaegerURL: http://tracing.istio-system:80
@@ -120,7 +120,7 @@ kiali:
 certmanager:
   enabled: false
   image:
-    repository: rancher/jetstack-cert-manager-controller
+    repository: loongson.harbor.cn/rancher/jetstack-cert-manager-controller
     tag: v0.8.1
 
 #
@@ -138,10 +138,10 @@ istio_cni:
 #
 istiocoredns:
   image:
-    repository: rancher/coredns-coredns
-    tag: 1.6.2
+    repository: loongson.harbor.cn/rancher/coredns-coredns
+    tag: 1.3.1
   pluginImage:
-    repository: rancher/istio-coredns-plugin
+    repository: loongson.harbor.cn/rancher/istio-coredns-plugin
     tag: 0.2-istio-1.1
   enabled: false
 
@@ -158,7 +158,7 @@ global:
   # Default hub for Istio images.
   # Releases are published to docker hub under 'istio' project.
   # Dev builds from prow are on gcr.io
-  hub: docker.io/rancher
+  hub: loongson.harbor.cn/istio
 
   # Default tag for Istio images.
   tag: 1.4.7
@@ -170,7 +170,7 @@ global:
     level: "default:info"
 
   kubectl:
-    repository: rancher/istio-kubectl
+    repository: loongson.harbor.cn/istio/kubectl
     tag: 1.4.7
 
   # monitoring port used by mixer, pilot, galley and sidecar injector
@@ -190,7 +190,7 @@ global:
     enableHttps: false
 
   curl:
-    repository: rancher/pstauffer-curl
+    repository: loongson.harbor.cn/rancher/pstauffer-curl
     tag: v1.0.3
 
   proxy:
@@ -204,7 +204,7 @@ global:
           cpu: 10m
           memory: 10Mi
     # use fully qualified image names for alternate path to proxy.
-    repository: rancher/istio-proxyv2
+    repository: loongson.harbor.cn/istio/proxyv2
     tag: 1.4.7
 
     # cluster domain. Default value is "cluster.local".
@@ -363,7 +363,7 @@ global:
 
   proxy_init:
     # Base name for the istio-init container, used to configure iptables.
-    repository: rancher/istio-proxyv2
+    repository: loongson.harbor.cn/istio/proxyv2
     tag: 1.4.7
 
   # imagePullPolicy is applied to istio control plane components.
@@ -435,7 +435,7 @@ global:
   imagePullSecrets: []
     # - private-registry-key
 
-  # Specify pod scheduling arch(amd64, ppc64le, s390x) and weight as follows:
+  # Specify pod scheduling arch(amd64, ppc64le, mips64le, s390x) and weight as follows:
   #   0 - Never scheduled
   #   1 - Least preferred
   #   2 - No preference
@@ -444,6 +444,7 @@ global:
     amd64: 2
     s390x: 2
     ppc64le: 2
+    mips64le: 2
 
   # Whether to restrict the applications namespace the controller manages;
   # If not set, controller watches all namespaces
@@ -591,7 +592,7 @@ global:
   #- '*'
 
   nodeagent:
-    repository: rancher/istio-node-agent-k8s
+    repository: loongson.harbor.cn/istio/node-agent-k8s
     tag: 1.4.7
   sds:
     # SDS enabled. IF set to true, mTLS certificates for the sidecars will be
